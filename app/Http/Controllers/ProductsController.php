@@ -69,4 +69,15 @@ class ProductsController extends Controller
 
         return redirect()->route('products.index')->withSuccess(__('Product updated successfully'));
     }
+
+     /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->withSuccess(__('Product deleted successfully.'));
+    }
 }

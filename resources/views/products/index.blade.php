@@ -40,7 +40,7 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->status }}</td>
                 <td>{{ $product->user->name }}</td>
-                <td>{{ $product->created_at->format('d/m/y') }}</td>
+                <td>{{ $product->created_at->format('d/m/y h:i:s') }}</td>
 
                 <td>
                     <a class="btn btn-info btn-sm" href="{{ route('products.show', $product->id) }}">View</a>
