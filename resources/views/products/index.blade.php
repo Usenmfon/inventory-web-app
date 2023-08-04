@@ -23,6 +23,9 @@
                     Status
                 </th>
                 <th>
+                    Sold
+                </th>
+                <th>
                     Added By
                 </th>
                 <th>
@@ -39,6 +42,7 @@
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->status }}</td>
+                <td>{{ $product->sold }}</td>
                 <td>{{ $product->user->name }}</td>
                 <td>{{ $product->created_at->format('d/m/y h:i:s') }}</td>
 

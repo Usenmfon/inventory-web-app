@@ -41,17 +41,30 @@
                     @endif
                 </div>
 
+                <div class="mb-3">
+                    <label for="sold" class="form-label">Sold</label>
+                    <select class="form-control" name="sold" required>
+                        <?php $sold = ['yes', 'no']; ?>
+                        <option value="">--Sold--</option>
+                        @foreach ($sold as $key)
+                            <option value="{{ $key }}" {{ in_array($key, $sold) ? 'selected' : '' }}>
+                                {{ strtoupper($key) }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('sold'))
+                        <span class="text-danger text-left">{{ $errors->first('sold') }}</span>
+                    @endif
+                </div>
 
                 <div class="mb-3">
                     @auth
                         @role('admin')
                             <label for="status" class="form-label">Status</label>
                             <select class="form-control" name="status" required>
-                                <?php $status = ['pending', 'approved', 'rejected'] ?>
+                                <?php $status = ['pending', 'approved', 'rejected']; ?>
                                 <option value="">--Status--</option>
                                 @foreach ($status as $status_value)
-                                    <option value="{{ $status_value }}"
-                                        {{ in_array($status_value, $status) ? 'selected' : '' }}>
+                                    <option value="{{ $status_value }}" {{ in_array($status_value, $status) ? 'selected' : '' }}>
                                         {{ strtoupper($status_value) }}</option>
                                 @endforeach
                             </select>
