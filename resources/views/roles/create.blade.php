@@ -38,7 +38,7 @@
                     </thead>
 
                     @foreach ($permissions as $permission)
-                        
+
                         <tbody>
                             <tr>
                                 <td>
@@ -52,7 +52,7 @@
                     @endforeach
                 </table>
 
-                <button type="submit" class="btn btn-primary">Save user</button>
+                <button type="submit" class="btn btn-primary">Save role</button>
                 <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
             </form>
         </div>
