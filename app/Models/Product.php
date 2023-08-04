@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductSoldEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\ProductStatusEnum;
@@ -17,14 +18,17 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'status'
+        'status',
+        'sold',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     protected $casts = [
-        'status' => ProductStatusEnum::class
+        'status' => ProductStatusEnum::class,
+        'sold' => ProductSoldEnum::class,
     ];
 }

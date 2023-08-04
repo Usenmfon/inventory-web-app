@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('price');
             $table->string('status')->default('pending');
+            $table->string('sold')->default('no');
             $table->timestamps();
 
             $table->index('user_id');
