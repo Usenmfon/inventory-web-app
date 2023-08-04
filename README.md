@@ -26,7 +26,7 @@ npm install
 php artisan permission:create-permission-routes
 
 #Seed default user (admin)
-php artisan db:seed –class=CreateAdminUserSeeder
+php artisan db:seed --class=CreateAdminUserSeeder
 
 # build CSS and JS assets
 npm run dev
