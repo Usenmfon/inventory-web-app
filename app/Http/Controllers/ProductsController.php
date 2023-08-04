@@ -32,7 +32,7 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        Product::create(array_merge($request->only('name', 'description', 'price', 'status'), [
+        Product::create(array_merge($request->only('name', 'description', 'price', 'status', 'sold'), [
             'user_id' => auth()->id()
         ]));
 
@@ -65,7 +65,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->only('name', 'description', 'price', 'status'));
+        $product->update($request->only('name', 'description', 'price', 'status', 'sold'));
 
         return redirect()->route('products.index')->withSuccess(__('Product updated successfully'));
     }
