@@ -40,7 +40,7 @@ Then launch the server:
 php artisan serve
 ```
 
-The Laravel project is now up and running! Access it at http://localhost:8000.
+The Laravel project is now up and running! Access it at http://127.0.0.1:8000.
 
 ## Environment variables
 
