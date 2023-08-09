@@ -7,7 +7,7 @@
             <p class="">Manage your products here.</p>
             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right">Add new product</a>
         </div>
-        <div class="mt-2">
+        <div class="mt-2" x-data="{show:true}" x-show="show" x-init="setTimeout(() => show = false, 3000)">
             @include('layouts.partials.messages')
         </div>
     <table class="table table-bordered">
@@ -62,9 +62,9 @@
 
         </tbody>
     </table>
-    <div class="d-flex">
-        {!! $products->links() !!}
-    </div>
+</div>
+<div class="d-flex mt-4">
+    {!! $products->links() !!}
 </div>
 @endsection
 
