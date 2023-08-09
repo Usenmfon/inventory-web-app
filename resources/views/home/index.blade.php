@@ -14,7 +14,7 @@
             <div class="row">
                 @foreach ($products as $key => $product)
                     <div class="col-sm-6 mb-4">
-                        <div class="card">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Product Name: {{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
@@ -24,11 +24,9 @@
                     </div>
                 @endforeach
             </div>
-        @endguest
-        {{-- <div class="row">
-            <div class="col-6 d-flex justify-content-center">
+            <div class="d-flex mt-4">
                 {!! $products->links() !!}
             </div>
-        </div> --}}
+        @endguest
     </div>
 @endsection

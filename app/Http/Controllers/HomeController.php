@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $products = Product::whereIn('status', ['approved'])->latest()->paginate(5);
+        $products = Product::whereIn('status', ['approved'])->latest()->simplePaginate(6);
         // dd($products);
         return view('home.index', compact('products'));
     }
