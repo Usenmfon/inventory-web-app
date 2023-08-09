@@ -51,7 +51,7 @@
                         @role('admin')
                             <label for="status" class="form-label">Status</label>
                             <select class="form-control" name="status" required>
-                                <?php $status = ['Pending', 'Aprroved', 'Rejected'] ?>
+                                <?php $status = ['pending', 'approved', 'rejected'] ?>
                                 <option value="">--Status--</option>
                                 @foreach ($status as $status_value)
                                     <option value="{{ $status_value }}"
