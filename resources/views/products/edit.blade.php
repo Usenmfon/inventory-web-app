@@ -48,7 +48,7 @@
                         <option value="">--Sold--</option>
                         @foreach ($sold as $key)
                             <option value="{{ $key }}" {{ in_array($key, $sold) ? 'selected' : '' }}>
-                                {{ strtoupper($key) }}</option>
+                                {{  $key }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('sold'))
@@ -60,19 +60,41 @@
                     @auth
                         @role('admin')
                             <label for="status" class="form-label">Status</label>
-                            <select class="form-control" name="status" required>
-                                <?php $status = ['pending', 'approved', 'rejected']; ?>
-                                <option value="">--Status--</option>
-                                @foreach ($status as $status_value)
+                            <span href="#myModal" class="trigger-btn" data-toggle="modal">
+                                <select class="form-control" name="status" required>
+                                    <?php $status = ['pending', 'approved', 'rejected']; ?>
+                                    @foreach ($status as $status_value)
                                     <option value="{{ $status_value }}" {{ in_array($status_value, $status) ? 'selected' : '' }}>
-                                        {{ strtoupper($status_value) }}</option>
-                                @endforeach
-                            </select>
+                                        {{ $status_value }}</option>
+                                        @endforeach
+                                        <option value="" selected>--Status--</option>
+                                </select>
+                            </span>
                             @if ($errors->has('status'))
                                 <span class="text-danger text-left">{{ $errors->first('status') }}</span>
                             @endif
                         @endrole
                     @endauth
+                </div>
+
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header flex-column">
+                                <div class="icon-box">
+                                    <i class="material-icons">&#xE5CD;</i>
+                                </div>
+                                <h4 class="modal-title w-100">Are you sure?</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you really want to update the status of this product?</p>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save changes</button>

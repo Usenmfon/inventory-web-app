@@ -18,8 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    /** Home Routes */
 
+    /** Home Routes */
+    
     Route::get('/', 'HomeController@index')->name('home.index');
 
     Route::group(['middleware' => ['guest']], function () {
