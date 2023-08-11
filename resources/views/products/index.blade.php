@@ -69,7 +69,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Do you really want to delete {{ $product->name }}? This process cannot be undone.</p>
+                                    <p>Do you really want to delete <strong>{{ strtoupper($product->name) }}</strong>? This process cannot be undone.</p>
                                 </div>
                                 <div class="modal-footer justify-content-center">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
