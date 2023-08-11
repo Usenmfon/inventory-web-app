@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Notifications\WelcomeEmailNotification;
 
 class UsersController extends Controller
 {
@@ -43,9 +44,11 @@ class UsersController extends Controller
     public function store(User $user, StoreUserRequest $request)
     {
         //Temporary generated password for a new user
-        $user->create(array_merge($request->validated(), [
+        $user = $user->create(array_merge($request->validated(), [
             'password' => 'test'
         ]));
+
+        $user->notify(new WelcomeEmailNotification($user));
 
         return redirect()->route('users.index')
             ->withSuccess(__('User created successfully.'));
