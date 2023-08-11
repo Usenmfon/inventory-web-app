@@ -10,7 +10,7 @@
             <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">Add new user</a>
         </div>
 
-        <div class="mt-2">
+        <div class="mt-2" x-data="{show:true}" x-show="show" x-init="setTimeout(() => show = false, 3000)">
             @include('layouts.partials.messages')
         </div>
 
