@@ -12,51 +12,41 @@
                 @method('patch')
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input value="{{ $user->name }}"
-                        type="text"
-                        class="form-control"
-                        name="name"
-                        placeholder="Name" required>
+                    <label for="name" class="form-label"><strong>Name</strong></label>
+                    <input value="{{ $user->name }}" type="text" class="form-control" name="name" placeholder="Name"
+                        required>
 
                     @if ($errors->has('name'))
                         <span class="text-danger text-left">{{ $errors->first('name') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input value="{{ $user->email }}"
-                        type="email"
-                        class="form-control"
-                        name="email"
+                    <label for="email" class="form-label"><strong>Email</strong></label>
+                    <input value="{{ $user->email }}" type="email" class="form-control" name="email"
                         placeholder="Email address" required>
                     @if ($errors->has('email'))
                         <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input value="{{ $user->username }}"
-                        type="text"
-                        class="form-control"
-                        name="username"
+                    <label for="username" class="form-label"><strong>Username</strong></label>
+                    <input value="{{ $user->username }}" type="text" class="form-control" name="username"
                         placeholder="Username" required>
                     @if ($errors->has('username'))
                         <span class="text-danger text-left">{{ $errors->first('username') }}</span>
                     @endif
                 </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Role</label>
-                    <select class="form-control"
-                        name="role" required>
-                        <option value="">Select role</option>
-                        @foreach($roles as $role)
-                            <option value="{{ $role->id }}"
-                                {{ in_array($role->name, $userRole)
-                                    ? 'selected'
-                                    : '' }}>{{ $role->name }}</option>
+
+                <div class="form-group">
+                    <label for="role" class="form-label"><strong>Role</strong></label>
+                    <div>
+                        @foreach ($roles as $role)
+                            <label for="" class="px-2"><input type="checkbox" name="role[]"
+                                    value="{{ $role->id }}"
+                                    {{ in_array($role->name, $userRole) ? 'checked' : '' }}>{{ strtoupper($role->name) }}</label>
                         @endforeach
-                    </select>
+                    </div>
+
                     @if ($errors->has('role'))
                         <span class="text-danger text-left">{{ $errors->first('role') }}</span>
                     @endif
