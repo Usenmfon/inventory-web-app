@@ -15,6 +15,8 @@ class ProductsController extends Controller
     {
         if(request('search')){
             $products = Product::where("name", "like","%". request('search') ."%")->paginate(6);
+        } elseif (request('status')){
+            $products = Product::where("status", "like","%". request('status') ."%")->paginate(6);
         } else {
             $products = Product::latest()->simplePaginate(6);
         }

@@ -8,6 +8,16 @@
             <form class="mx-sm-3 mb-2">
                 <input type="search" class="form-control" placeholder="Find products here by name..." name="search" value="{{ request('search') }}">
             </form>
+            <form>
+                <select class="mx-sm-3 mb-2" name="status">
+                    <?php $status = ['pending', 'approved', 'rejected']; ?>
+                    @foreach ($status as $key)
+                    <option value="{{ $key }}" {{ in_array($key, $status) ? 'selected' : '' }}>
+                        {{ $key }}</option>
+                        @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right mb-2">Add new product</a>
         </div>
         <div class="mt-2" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
