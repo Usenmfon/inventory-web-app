@@ -13,7 +13,11 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::latest()->simplePaginate(10);
+        if(request('search')){
+            $products = Product::where("name", "like","%". request('search') ."%")->paginate(6);
+        } else {
+            $products = Product::latest()->simplePaginate(6);
+        }
 
         return view('products.index', compact('products'));
     }
