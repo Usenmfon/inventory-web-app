@@ -15,6 +15,7 @@
                     <option value="{{ $key }}" {{ in_array($key, $status) ? 'selected' : '' }}>
                         {{ $key }}</option>
                         @endforeach
+                     <option value="" selected>--Select--</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Filter</button>
             </form>
