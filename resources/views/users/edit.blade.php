@@ -56,6 +56,5 @@
                 <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</button>
             </form>
         </div>
-
     </div>
 @endsection

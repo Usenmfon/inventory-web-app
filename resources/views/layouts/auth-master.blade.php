@@ -12,6 +12,8 @@
     <link href="{!! url('assets/css/signin.css') !!}" rel="stylesheet">
     <link href="signin.css" rel="stylesheet">
 
+    
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;

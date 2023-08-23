@@ -80,7 +80,6 @@
                         $(this).prop('checked',false);
                     });
                 }
-
             });
         });
     </script>
