@@ -1,11 +1,25 @@
 @extends('layouts.app-master')
 
 @section('content')
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">User</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Upate User</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
     <div class="bg-light p-4 rounded">
-        <h1>Update user</h1>
-        <div class="lead">
-
-        </div>
+        <div class="lead"></div>
 
         <div class="container mt-4">
             <form method="post" action="{{ route('users.update', $user->id) }}">
@@ -53,7 +67,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update user</button>
-                <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</button>
+                <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a>
             </form>
         </div>
     </div>

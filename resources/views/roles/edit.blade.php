@@ -1,8 +1,23 @@
 @extends('layouts.app-master')
 
 @section('content')
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Role</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Update Role</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
     <div class="bg-light p-4 rounded">
-        <h1>Update role</h1>
         <div class="lead">
             Edit role and manage permissions.
         </div>
@@ -13,9 +28,9 @@
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
                     <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
                 </div>
             @endif
@@ -25,11 +40,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input value="{{ $role->name }}"
-                        type="text"
-                        class="form-control"
-                        name="name"
-                        placeholder="Name" required>
+                    <input value="{{ $role->name }}" type="text" class="form-control" name="name" placeholder="Name"
+                        required>
                 </div>
 
                 <label for="permissions" class="form-label">Assign Permissions</label>
@@ -41,16 +53,12 @@
                         <th scope="col" width="1%">Guard</th>
                     </thead>
 
-                    @foreach($permissions as $permission)
+                    @foreach ($permissions as $permission)
                         <tr>
                             <td>
-                                <input type="checkbox"
-                                name="permission[{{ $permission->name }}]"
-                                value="{{ $permission->name }}"
-                                class='permission'
-                                {{ in_array($permission->name, $rolePermissions)
-                                    ? 'checked'
-                                    : '' }}>
+                                <input type="checkbox" name="permission[{{ $permission->name }}]"
+                                    value="{{ $permission->name }}" class='permission'
+                                    {{ in_array($permission->name, $rolePermissions) ? 'checked' : '' }}>
                             </td>
                             <td>{{ $permission->name }}</td>
                             <td>{{ $permission->guard_name }}</td>
@@ -71,13 +79,13 @@
         $(document).ready(function() {
             $('[name="all_permission"]').on('click', function() {
 
-                if($(this).is(':checked')) {
+                if ($(this).is(':checked')) {
                     $.each($('.permission'), function() {
-                        $(this).prop('checked',true);
+                        $(this).prop('checked', true);
                     });
                 } else {
                     $.each($('.permission'), function() {
-                        $(this).prop('checked',false);
+                        $(this).prop('checked', false);
                     });
                 }
             });

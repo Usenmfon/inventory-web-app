@@ -124,7 +124,8 @@ main > .container {
 .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
 	background: #ee3535;
 }
-/* .trigger-btn {
-	display: inline-block;
-	margin: 100px auto;
-} */
+
+.btn{
+    padding: .25rem .5rem;
+    font-size: .875rem;
+}

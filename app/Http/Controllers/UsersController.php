@@ -64,7 +64,9 @@ class UsersController extends Controller
     public function show(User $user)
     {
         return view('users.show', [
-            'user' => $user
+            'user' => $user,
+            'userRole' => $user->roles->pluck('name')->toArray(),
+            'roles' => Role::latest()->get()
         ]);
     }
 

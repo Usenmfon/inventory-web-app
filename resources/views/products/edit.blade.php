@@ -1,8 +1,23 @@
 @extends('layouts.app-master')
 
 @section('content')
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Product</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Update Product</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
     <div class="bg-light p-4 rounded">
-        <h2>Update Product</h2>
         <div class="lead">
             Edit Product.
         </div>
@@ -14,8 +29,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input value="{{ $product->name }}" type="text" class="form-control" name="name" placeholder="Name"
-                        required>
+                    <input value="{{ $product->name }}" type="text" class="form-control" name="name"
+                        placeholder="Name" required>
 
                     @if ($errors->has('name'))
                         <span class="text-danger text-left">{{ $errors->first('name') }}</span>
@@ -48,7 +63,7 @@
                         <option value="">--Sold--</option>
                         @foreach ($sold as $key)
                             <option value="{{ $key }}" {{ in_array($key, $sold) ? 'selected' : '' }}>
-                                {{  $key }}</option>
+                                {{ $key }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('sold'))
@@ -64,10 +79,11 @@
                                 <select class="form-control" name="status" required>
                                     <?php $status = ['pending', 'approved', 'rejected']; ?>
                                     @foreach ($status as $status_value)
-                                    <option value="{{ $status_value }}" {{ in_array($status_value, $status) ? 'selected' : '' }}>
-                                        {{ $status_value }}</option>
-                                        @endforeach
-                                        <option value="" selected>--Status--</option>
+                                        <option value="{{ $status_value }}"
+                                            {{ in_array($status_value, $status) ? 'selected' : '' }}>
+                                            {{ $status_value }}</option>
+                                    @endforeach
+                                    <option value="" selected>--Status--</option>
                                 </select>
                             </span>
                             @if ($errors->has('status'))
@@ -85,7 +101,8 @@
                                     <i class="material-icons">&#xE5CD;</i>
                                 </div>
                                 <h4 class="modal-title w-100">Are you sure?</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <p>Do you really want to update the status of this product?</p>

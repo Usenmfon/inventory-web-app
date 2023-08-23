@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
-    /** Home Routes */
-    
-    Route::get('/', 'HomeController@index')->name('home.index');
-
     Route::group(['middleware' => ['guest']], function () {
         /**
          *  Register Routes
@@ -38,38 +34,42 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 
     Route::group(['middleware' => ['auth', 'permission']], function () {
+        /** Home Routes */
+
+        Route::get('/', 'HomeController@index')->name('home.index');
+        
         /**
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
 
         /**
-     * User Routes
-     */
-    Route::group(['prefix' => 'users'], function () {
-        Route::get('/', 'UsersController@index')->name('users.index');
-        Route::get('/create', 'UsersController@create')->name('users.create');
-        Route::post('/create', 'UsersController@store')->name('users.store');
-        Route::get('/{user}/show', 'UsersController@show')->name('users.show');
-        Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
-        Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
-        Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
-    });
+         * User Routes
+         */
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', 'UsersController@index')->name('users.index');
+            Route::get('/create', 'UsersController@create')->name('users.create');
+            Route::post('/create', 'UsersController@store')->name('users.store');
+            Route::get('/{user}/show', 'UsersController@show')->name('users.show');
+            Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
+            Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
+            Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+        });
 
-    /**
-     * Product Routes
-     */
-    Route::group(['prefix' => 'products'], function () {
-        Route::get('/', 'ProductsController@index')->name('products.index');
-        Route::get('/create', 'ProductsController@create')->name('products.create');
-        Route::post('/create', 'ProductsController@store')->name('products.store');
-        Route::get('/{product}/show', 'ProductsController@show')->name('products.show');
-        Route::get('/{product}/edit', 'ProductsController@edit')->name('products.edit');
-        Route::patch('/{product}/update', 'ProductsController@update')->name('products.update');
-        Route::delete('/{product}/delete', 'ProductsController@destroy')->name('products.destroy');
-    });
+        /**
+         * Product Routes
+         */
+        Route::group(['prefix' => 'products'], function () {
+            Route::get('/', 'ProductsController@index')->name('products.index');
+            Route::get('/create', 'ProductsController@create')->name('products.create');
+            Route::post('/create', 'ProductsController@store')->name('products.store');
+            Route::get('/{product}/show', 'ProductsController@show')->name('products.show');
+            Route::get('/{product}/edit', 'ProductsController@edit')->name('products.edit');
+            Route::patch('/{product}/update', 'ProductsController@update')->name('products.update');
+            Route::delete('/{product}/delete', 'ProductsController@destroy')->name('products.destroy');
+        });
 
-    Route::resource('roles', RolesController::class);
-    Route::resource('permissions', PermissionsController::class);
+        Route::resource('roles', RolesController::class);
+        Route::resource('permissions', PermissionsController::class);
     });
 });

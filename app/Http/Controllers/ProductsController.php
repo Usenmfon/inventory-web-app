@@ -13,13 +13,10 @@ class ProductsController extends Controller
 
     public function index()
     {
-        if(request('search')){
-            $products = Product::where("name", "like","%". request('search') ."%")->paginate(6);
-        } elseif (request('status')){
-            $products = Product::where("status", "like","%". request('status') ."%")->paginate(6);
-        } else {
-            $products = Product::latest()->simplePaginate(6);
+        if (request('search')) {
+            $products = Product::where("name", "like", "%" . request('search') . "%")->paginate(6);
         }
+        $products = Product::latest()->simplePaginate(6);
 
         return view('products.index', compact('products'));
     }
@@ -76,7 +73,7 @@ class ProductsController extends Controller
         return redirect()->route('products.index')->withSuccess(__('Product updated successfully'));
     }
 
-     /**
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)

@@ -1,23 +1,28 @@
 @extends('layouts.app-master')
 
 @section('content')
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Product</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">View Products</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
     <div class="bg-light p-4 rounded">
-        <h2>Products</h2>
         <div class="lead">
             <p class="">Manage your products here.</p>
             <form class="mx-sm-3 mb-2">
-                <input type="search" class="form-control" placeholder="Find products here by name..." name="search" value="{{ request('search') }}">
-            </form>
-            <form>
-                <select class="mx-sm-3 mb-2" name="status">
-                    <?php $status = ['pending', 'approved', 'rejected']; ?>
-                    @foreach ($status as $key)
-                    <option value="{{ $key }}" {{ in_array($key, $status) ? 'selected' : '' }}>
-                        {{ $key }}</option>
-                        @endforeach
-                     <option value="" selected>--select--</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Filter</button>
+                <input type="search" class="form-control" placeholder="Find products here by name..." name="search"
+                    value="{{ request('search') }}">
             </form>
             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right mb-2">Add new product</a>
         </div>
@@ -86,7 +91,8 @@
                                         <div class="modal-body">
                                             <p>Do you really want to delete
                                                 <strong>{{ strtoupper($product->name) }}</strong>? This process cannot be
-                                                undone.</p>
+                                                undone.
+                                            </p>
                                         </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="button" class="btn btn-secondary"
