@@ -15,10 +15,11 @@ class ProductsController extends Controller
     {
         if (request('search')) {
             $products = Product::where("name", "like", "%" . request('search') . "%")->paginate(6);
+        }else{
+            $products = Product::latest()->simplePaginate(6);
         }
-        $products = Product::latest()->simplePaginate(6);
 
-        return view('products.index', compact('products'));
+        return view('pages.products.index', compact('products'));
     }
 
     /**
@@ -26,7 +27,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('pages.products.create');
     }
 
     /**
@@ -48,7 +49,7 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', [
+        return view('pages.products.show', [
             'product' => $product
         ]);
     }
@@ -58,7 +59,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('Products.edit', [
+        return view('pages.products.edit', [
             'product' => $product
         ]);
     }

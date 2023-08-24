@@ -47,11 +47,11 @@
         </div>
 
         <!-- Navbar -->
-        @include('components.navbars.navbar')
+        @include('components.navbars.navs.navbar')
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('components.sidebar')
+        @include('components.navbars.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -61,7 +61,7 @@
         <!-- /.content-wrapper -->
 
         <!-- footer Section -->
-            @include('layouts.partials.footer')
+            @include('components.footer.index')
         <!-- /.footer-section -->
 
         <!-- Control Sidebar -->

@@ -20,10 +20,10 @@
     <div class="bg-light p-4 rounded">
         <div class="lead">
             <p class="">Manage your products here.</p>
-            <form class="mx-sm-3 mb-2">
+            {{-- <form class="mx-sm-3 mb-2">
                 <input type="search" class="form-control" placeholder="Find products here by name..." name="search"
                     value="{{ request('search') }}">
-            </form>
+            </form> --}}
             <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right mb-2">Add new product</a>
         </div>
         <div class="mt-2" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
@@ -118,8 +118,8 @@
 
             </tbody>
         </table>
-    </div>
-    <div class="d-flex mt-4">
-        {!! $products->links() !!}
+        <div class="d-flex mt-4">
+            {!! $products->links() !!}
+        </div>
     </div>
 @endsection
